@@ -25,15 +25,15 @@ jobs:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.APP_NAME}} #Must be unique in Heroku
-          heroku_email: ${{secrets.EMAIL}}
+          heroku_api_key: ${{e6c0f9c5-a88a-4f48-a990-5694f888be94}}
+          heroku_app_name: ${{pls2rayus}} #Must be unique in Heroku
+          heroku_email: ${{plsdrive03+tai@gmail.com}}
           usedocker: true
           # docker_build_args: |
           #   HD_UUID
         env:
           # 这是为了heroku，注意前缀有个HD，这是为了告诉heroku-deploy，这些变量需要传入到 container 中。
-          HD_UUID: ${{ secrets.HEROKU_V2RAY_UUID }} # UUID for v2ray user, 为了安全，一定要放入 github action token 中
+          HD_UUID: ${{d03a9de2-b2c6-4a3f-8725-c5deba93ac63}} # UUID for v2ray user, 为了安全，一定要放入 github action token 中
           HD_TUNNEL_TOKEN: ${{ secrets.HEROKU_TUNNEL_TOKEN }} # token for cloudflared tunnel
           NODE_ENV: production
           SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
@@ -45,12 +45,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.APP_NAME}} #Must be unique in Heroku
-          heroku_email: ${{secrets.EMAIL}}
+          heroku_api_key: ${{e6c0f9c5-a88a-4f48-a990-5694f888be94}}
+          heroku_app_name: ${{pls2rayus}} #Must be unique in Heroku
+          heroku_email: ${{plsdrive03+tai@gmail.com}}
           justlogin: true
       - run: |
           echo action is ${{ github.event.inputs.actions }}
-          if [[ ${{ github.event.inputs.actions }} == 'stop' ]]; then heroku ps:scale web=0 -a ${{secrets.APP_NAME}} && echo "stop"; fi
-          if [[ ${{ github.event.inputs.actions }} == 'start' ]]; then heroku ps:scale web=1 -a ${{secrets.APP_NAME}} && echo "start"; fi
-          heroku ps -a ${{secrets.APP_NAME}}
+          if [[ ${{ github.event.inputs.actions }} == 'stop' ]]; then heroku ps:scale web=0 -a ${{pls2rayus}} && echo "stop"; fi
+          if [[ ${{ github.event.inputs.actions }} == 'start' ]]; then heroku ps:scale web=1 -a ${{pls2rayus}} && echo "start"; fi
+          heroku ps -a ${{pls2rayus}}
